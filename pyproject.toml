@@ -1,11 +1,16 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
-name = "ML_Portfolio"
+name = "ml-portfolio"
 version = "0.1.0"
-description = "Add your description here"
+description = "End-to-end ML pipelines for salary prediction (regression) and Airbnb superhost classification."
 readme = "README.md"
 requires-python = "==3.12.*"
 dependencies = [
     "imbalanced-learn>=0.14.0",
+    "jupytext>=1.18.1",
     "matplotlib>=3.10.6",
     "notebook>=7.4.7",
     "numpy>=2.3.3",
@@ -23,5 +28,13 @@ dependencies = [
 dev = [
     "jupyter-ruff>=0.3.0",
     "nbconvert[webpdf]>=7.16.6",
+    "pytest>=8.0.0",
     "scipy-stubs>=1.16.2.3",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ml_portfolio"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
